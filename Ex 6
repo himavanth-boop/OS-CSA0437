@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int main(){
+    int n, bt[10], pr[10], rt[10];
+    int complete=0, time=0;
+
+    printf("Enter number of processes: ");
+    scanf("%d",&n);
+
+    for(int i=0;i<n;i++){
+        scanf("%d%d",&bt[i],&pr[i]);
+        rt[i]=bt[i];
+    }
+
+    while(complete<n){
+        int min=999, idx=-1;
+
+        for(int i=0;i<n;i++)
+            if(rt[i]>0 && pr[i]<min){
+                min=pr[i];
+                idx=i;
+            }
+
+        rt[idx]--;
+        if(rt[idx]==0)
+            complete++;
+
+        time++;
+    }
+
+    printf("All processes completed\n");
+    return 0;
+}
